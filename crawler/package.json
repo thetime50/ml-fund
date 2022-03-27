@@ -1,0 +1,24 @@
+{
+  "name": "ml-fund-crawler",
+  "version": "0.0.1",
+  "description": "爬虫工具",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dj": "node ./danjuan/index.js",
+    "tt": "node ./tiantian/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thetime50/ml-fund/crawler"
+  },
+  "keywords": [
+    "ml",
+    "fund",
+    "crawer"
+  ],
+  "author": "thetime50",
+  "license": "ISC",
+  "dependencies": {}
+}
