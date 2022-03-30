@@ -1,6 +1,14 @@
 import {dataPath,userCookie} from './cfj.js';
 import https from 'https';
 import request from 'request';
+import path from 'path'
+import {
+    csvdbInit,
+    csvdbTest,
+} from "../lib/jcdb/index.js"
+
+csvdbInit(path.join(dataPath, 'test.csv'))
+await csvdbTest()
 // http
 // request/request-promise
 // axios
@@ -59,4 +67,4 @@ async function main() {
         }
     );
 }
-main()
+// main()
