@@ -21,7 +21,7 @@ console.dir(obj)
 
 
 // console.log('https', https)
-let url = "https://danjuanapp.com/djapi/fund/nav-growth/002213?day=360"
+let url = "https://danjuanapp.com/djapi/fund/nav-growth/002213?day=7"
 // let url = "https://danjuanapp.com"
 
 async function main() {
@@ -53,7 +53,9 @@ async function main() {
         },
                 
         function (err, res, body) {
-            console.log(body);
+            console.log("***111")
+            console.dir(body);
+            console.dir(body.data.fund_nav_growth)
         }
     );
 }

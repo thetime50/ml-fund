@@ -20,5 +20,7 @@
   ],
   "author": "thetime50",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
