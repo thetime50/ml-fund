@@ -11,5 +11,9 @@ export async function csvdbTest() {
         mail: "johndoe@github.com"
     });
     console.log('res', res)
+    res = await db.get({
+        mail: "jobs@github.com"
+    });
+    console.log('res', res)
     await db.add({id: 2, name: "stevejobs", mail: "jobs@github.com"});
 }
