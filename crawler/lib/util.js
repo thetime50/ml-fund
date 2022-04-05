@@ -22,15 +22,15 @@ export function jsFileParse(file,export_ = false){
         // console.log('file', file)
     }
     let declaresRe = new RegExp(`\\b(${decList.join('|')})\\s+\\w+`,'g')
-    let match = (file.match(declaresRe)||[]).map(item => item.replace(/\s(\w)$/,'$1'))
+    let match = (file.match(declaresRe)||[]).map(item => item.slice(item.lastIndexOf(' ')+1))
     // console.log('match', match)
     let exFields = match.map(item => {
-        let field = item.slice(item.lastIndexOf(' ')+1)
+        let field = item
         return `var ${field};${resObj}.${field} = ${field};`
     })
     // file = file.replace(/\bfunction\s+(\w+)/g,'__res__[$1] = function ')
     let fun = new Function(`${file}; let  ${resObj}= {}; ${exFields.join('')} return ${resObj};`)
-    return {declares:match, fun}
+    return {fields:match, fun}
 }
 export function jsFileFields(file,export_ = false){
     const resObj = '__ex_res__'
