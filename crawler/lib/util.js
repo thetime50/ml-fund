@@ -19,7 +19,7 @@ export function jsFileParse(file,export_ = false){
     if(export_){
         const exDeclaresRe = new RegExp(`\\bexport\\s+(\\b(${decList.join('|')})\\s+\\w+)`,'g')
         file = file.replace(exDeclaresRe,`$1`)
-        console.log('file', file)
+        // console.log('file', file)
     }
     let declaresRe = new RegExp(`\\b(${decList.join('|')})\\s+\\w+`,'g')
     let match = (file.match(declaresRe)||[]).map(item => item.replace(/\s(\w)$/,'$1'))
@@ -38,7 +38,7 @@ export function jsFileFields(file,export_ = false){
     if(export_){
         const exDeclaresRe = new RegExp(`\\bexport\\s+(\\b(${decList.join('|')})\\s+\\w+)`,'g')
         file = file.replace(exDeclaresRe,`$1`)
-        console.log('file', file)
+        // console.log('file', file)
     }
     let declaresRe = new RegExp(`\\b(${decList.join('|')})\\s+\\w+`,'g')
     let match = (file.match(declaresRe)||[]).map(item => item.replace(/\s(\w)$/,'$1'))
