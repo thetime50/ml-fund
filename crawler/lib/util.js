@@ -41,7 +41,7 @@ export function jsFileFields(file,export_ = false){
         // console.log('file', file)
     }
     let declaresRe = new RegExp(`\\b(${decList.join('|')})\\s+\\w+`,'g')
-    let match = (file.match(declaresRe)||[]).map(item => item.replace(/\s(\w)$/,'$1'))
+    let match = (file.match(declaresRe)||[]).map(item => item.slice(item.lastIndexOf(' ')+1))
     return match
 }
 
