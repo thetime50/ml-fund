@@ -16,5 +16,12 @@ var http = axios.create({
 //     }
 // );
 
+var siteHttp = axios.create({
+    baseURL: baseSiteURL, // todo 后面肯传相对路径
+    timeout: 5000, //请求超过5秒即超时返回错误
+});
 
-export {http}
+export {
+    http,
+    siteHttp
+}
