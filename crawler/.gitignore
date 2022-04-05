@@ -1,6 +1,8 @@
 # 忽略文件夹
 dist/**
-data/**
+data/*
+!data/dj
+data/dj/*
 node_modules/**
 
 # 忽略文件
