@@ -3,7 +3,7 @@ import qs from 'qs'
 import {userCookieObj} from './cfj.js';
 
 // 个人信息
-export const apiAccount = (key) => http.get(`/djapi/account` )
+export const apiAccount = () => http.get(`/djapi/account` )
 
 // 搜索
 export const apiSearch = (key) => http.get(`/djapi/v2/search?` + qs.stringify({
