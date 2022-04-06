@@ -1,4 +1,9 @@
+import path from 'path'
 import csvdb from "csv-database"
+import {
+    sleep,
+    checkPath,
+} from "../util.js"
 
 // 索引分为两类
 // 数据索引 index 
@@ -26,3 +31,27 @@ export async function csvdbTest() {
         await db.add(data);
     }
 }
+
+export class CjdbClass {
+    constructor(dbpath,cols){
+        this.dbpath = dbpath
+        this.cols = cols
+    }
+    async init(){
+        await checkPath(path.dirname( this.dbpath ),true)
+        await sleep(10)
+        this.db = await csvdb(this.dbpath, this.cols);
+    }
+    async get(query){
+        return await this.db.get(query)
+    }
+    async add(data){
+        return await this.db.add(data)
+    }
+    async batchAdd(list){
+        for(let index in list){
+            await this.db.add(list[index])
+        }
+    }
+}
+

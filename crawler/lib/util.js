@@ -66,3 +66,64 @@ export function jsFileField(field,file/* ,export_ = false */){
     obj = new Function(`${file}; return ${field};`)()
     return obj
 }
+
+
+import pfs from 'fs/promises'
+import path from 'path'
+import rm from 'rimraf'
+
+/**
+* 异步延迟
+* @param {number} time 延迟的时间,单位毫秒
+*/
+export function sleep(time = 0) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, time);
+    })
+};
+
+// 移除文件夹
+export const prm = (path) => {
+    return new Promise((resolve,reject)=>{
+        rm(path,err => {
+            if(err){
+                reject(err)
+                return
+            }
+            resolve()
+        })
+    })
+}
+
+export async function checkPath (dpath,generate = false) {
+    try {
+        let stat = await pfs.stat(dpath)
+    } catch (error) {
+        if(generate){
+            await checkPath(path.dirname(dpath))
+            try {
+                await pfs.mkdir(dpath) //重复创建路径会报错
+            } catch (error) {
+                // throw error
+            }
+        }else{
+            return false
+        }
+    }
+    return true 
+}
+
+export const saveFile = async (fpath, data) => {
+    try {
+        fpath = path.normalize(fpath)
+        await checkPath(path.dirname(fpath),true)
+        await sleep(10)
+        await pfs.writeFile(fpath, data)
+    } catch (error) {
+        throw error
+    }
+}
+
+// saveFile('d:\\Work\\Mlf\\edu_ex_web_api\\docs\\3.机构管理', '123')
