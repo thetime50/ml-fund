@@ -1,5 +1,5 @@
 import path from 'path'
-import csvdb from "csv-database"
+import csvdb from "csv-database" // 这个库不会很好，写失败都没有返回回来
 import {
     sleep,
     checkPath,
