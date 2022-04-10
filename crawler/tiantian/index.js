@@ -24,13 +24,12 @@ async function crawlerDaysWorth(fid){
 
     Data_netWorthTrend.forEach(item => {
         item._dateStr = dayjs(item.x).format('YYYYMMDD')
-        item._cjdbindex_ = ''
-        item._cjdbjson_ = ''
+        item._jcdbindex_ = ''
+        item._jcdbjson_ = ''
     })
 
-    let db = getDbInstace(fid)
-    await db.init()
-    db.batchAdd(Data_netWorthTrend)
+    let db = await getDbInstace(fid)
+    db.add(Data_netWorthTrend)
 }
 
 crawlerDaysWorth("002213")

@@ -32,26 +32,13 @@ export async function csvdbTest() {
     }
 }
 
-export class CjdbClass {
-    constructor(dbpath,cols){
-        this.dbpath = dbpath
-        this.cols = cols
-    }
-    async init(){
-        await checkPath(path.dirname( this.dbpath ),true)
+export async function jcdb(dbpath,cols){
+    
+        await checkPath(path.dirname( dbpath ),true)
         await sleep(10)
-        this.db = await csvdb(this.dbpath, this.cols);
-    }
-    async get(query){
-        return await this.db.get(query)
-    }
-    async add(data){
-        return await this.db.add(data)
-    }
-    async batchAdd(list){
-        for(let index in list){
-            await this.db.add(list[index])
-        }
-    }
+        let db = await csvdb(dbpath, cols);
+        db.jc_dbpath = dbpath
+        db.jc_cols = cols
+        return db
 }
 
