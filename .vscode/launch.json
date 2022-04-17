@@ -7,11 +7,29 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "crawler tiantian",
+            "name": "crawler dj",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\crawler\\danjuan\\index.js"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "crawler djsel",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\crawler\\danjuan\\select.js"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "crawler tt",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\crawler\\tiantian\\index.js"
-        }
+        },
     ]
 }

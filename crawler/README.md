@@ -21,8 +21,13 @@ es-lint
 
 ## 蛋卷
 https://danjuanapp.com/  
-npm run dj
+
+// 数据爬虫  
+npm run dj  
+// 基金选择  
+npm run ttsel
 
 ## 天天
-npm run tt
+// 数据爬虫  
+npm run tt  
 

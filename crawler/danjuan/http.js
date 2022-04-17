@@ -10,7 +10,8 @@ var http = axios.create({
 });
 http.interceptors.request.use(
     config => {
-        //判断是否存在token，如果存在的话，则每个http header都加上token                    //     'Cookie': userCookie,
+        //判断是否存在token，如果存在的话，则每个http header都加上token                    
+        //     'Cookie': userCookie,
         config.headers['Cookie'] = userCookie
         return config;
     }

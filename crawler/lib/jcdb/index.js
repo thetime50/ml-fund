@@ -11,12 +11,13 @@ import {
 // 一般使用数据索引
 
 let DBPATH = 'users.csv'
+const DEFAULT_DELIM = ",";
 
 export function csvdbInit(dbpath,){
     DBPATH = dbpath
 }
 export async function csvdbTest() {
-    const db = await csvdb(DBPATH, ["id", "name", "mail"]);
+    const db = await csvdb(DBPATH, ["id", "name", "mail"], DEFAULT_DELIM);
     let res = await db.get({
         mail: "johndoe@github.com"
     });
@@ -36,7 +37,7 @@ export async function jcdb(dbpath,cols){
     
         await checkPath(path.dirname( dbpath ),true)
         await sleep(10)
-        let db = await csvdb(dbpath, cols);
+        let db = await csvdb(dbpath, cols, DEFAULT_DELIM);
         db.jc_dbpath = dbpath
         db.jc_cols = cols
         return db
