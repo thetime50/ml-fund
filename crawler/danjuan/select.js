@@ -12,7 +12,7 @@ import {jcdb} from '../lib/jcdb/index.js'
 
 async function saveCsv(list){
     const cols = Object.keys( list[0] )
-    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',`good-found-${dayjs().format('YYYY-MMDD-HHmmSS')}.csv`), cols)
+    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',`good-found-${dayjs().format('YYYY-MMDD-HHmmss')}.csv`), cols)
     db.add(list)
 }
 
@@ -38,7 +38,10 @@ async function main(){
             try{
                 const managerList = managerDetail.manager_list.length && managerDetail.manager_list[0]
                 // console.log('fundDetail, managerDetail', fundDetail, managerDetail)
-                if(!managerList) continue;
+                if(!managerList){ 
+                    console.log('fd_code, fd_full_name', fundDetail.fd_code, fundDetail.fd_full_name)
+                    continue;
+                }
                 // 基金经理管理时间
                 const keepTime = managerList.achievement_list.filter((item) => {
                     return item.fund_code === id
@@ -51,9 +54,10 @@ async function main(){
                     totshare:fundDetail.totshare, // 金钱规模
                     fd_full_name:fundDetail.fd_full_name, // 基金的名字
                     keeper_name:fundDetail.keeper_name, // 公司名字
-                    fund_derived:fundDetail.fund_derived, // 收益
-                    unit_nav:fundDetail.unit_nav, // 历史累计收益
+                    // fund_derived:fundDetail.fund_derived, // 收益
+                    unit_nav:fundDetail.fund_derived.unit_nav, // 历史累计收益
                     keep_time:keepTime, // 管理时间
+                    work_year:managerList.work_year, // 基金经理年限
                 }
 
                 const total = resDetail.totshare.split('亿');
