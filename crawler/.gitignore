@@ -12,7 +12,7 @@ data/ttsel/*
 !data/ttsel/good-found-2022-0418-013047.csv
 !data/ttsel/gf-2022-0418-013047.log
 !data/ttsel/good-found-2022-0418-015706.csv
-!data/ttsel/REASDME.md
+!data/ttsel/README.md
 node_modules/**
 
 # 忽略文件
