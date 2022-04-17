@@ -8,6 +8,9 @@ data/*
 !data/ttsel
 data/ttsel/*
 !data/ttsel/good-found-2022-0417-1945.csv
+!data/ttsel/good-found-2022-0418-011852_80.csv
+!data/ttsel/good-found-2022-0418-013047.csv
+!data/ttsel/gf-2022-0418-013047.log
 node_modules/**
 
 # 忽略文件

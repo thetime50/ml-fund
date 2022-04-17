@@ -10,9 +10,11 @@ import {
 import path from 'path'
 import {jcdb} from '../lib/jcdb/index.js'
 
+const YIELD_MIN = 80
+
 async function saveCsv(list){
     const cols = Object.keys( list[0] )
-    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',`good-found-${dayjs().format('YYYY-MMDD-HHmmss')}.csv`), cols)
+    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',`good-found-${dayjs().format('YYYY-MMDD-HHmmss')}_${YIELD_MIN}.csv`), cols)
     db.add(list)
 }
 
@@ -26,7 +28,7 @@ async function main(){
     let rank = await apiFundRank(1,'3y',500 ,1)
     // console.log('rank.data', rank.data)
     // console.log('rank.data.data.items[0]', rank.data.data.items[0])
-    let fundList = rank.data.data.items.filter((v)=> v.yield >= 100)
+    let fundList = rank.data.data.items.filter((v)=> v.yield >= YIELD_MIN)
 
     let goodFundList = []
     // 循环请求接口获取基金详情并过滤
