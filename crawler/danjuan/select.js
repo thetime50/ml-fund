@@ -90,5 +90,41 @@ async function main(){
     await saveCsv(goodFundList)
 }
 
-main()
+// main()
+
+async function getDbInstace(fname){
+    const cols = [
+        "found_date",
+        "fd_code",
+        "manager_name",
+        "totshare",
+        "fd_full_name",
+        "keeper_name",
+        "unit_nav",
+        "keep_time",
+        "work_year",
+    ]
+    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',fname), cols)
+    return db
+}
+
+async function addYeled(){
+    let rank = await apiFundRank(1,'3y',500 ,1)
+    const db = await getDbInstace('good-found-2022-0418-013047.csv')
+    let list = await db.get()
+    const frank = rank.data.data.items.filter((v)=> v.yield)
+    const reslist = []
+    for(let i of frank){
+        let match = list.find((v)=> v.fd_code === i.fd_code)
+        if(match){
+            reslist.push({
+                ...match,
+                yield:i.yield,
+            })
+        }
+    }
+    await saveCsv(reslist)
+}
+
+addYeled()
 
