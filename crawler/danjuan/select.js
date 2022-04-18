@@ -132,7 +132,7 @@ async function addYeled(){
 async function saveRank(){
     let resRank = []
     for (let i = 1; i <= 10; i++) {
-        let {data:rank} = await apiFundRank(3,'3y',500 ,i)
+        let {data:rank} = await apiFundRank(1,'3y',500 ,i)
         resRank = resRank.concat(rank.data.items)
         let wait = (1000 + Math.random()*2000).toFixed(2)
         console.log('i, wait, len, total', i,wait,resRank.length,rank.data.total_items)
