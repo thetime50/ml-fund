@@ -47,14 +47,14 @@ async function main(){
     // console.log('fundList', fundList)
     
     let err = 0
-    for(let i=0; i < 1 /* fundList.length */; i++){
+    for(let i=0; i < fundList.length; i++){
         let fund = fundList[i]
         try{
 
             await crawlerDaysWorth(fund.fd_code)
             if(i && i%5==0){
                 let wait = (1000 + Math.random()*3000).toFixed(2)        
-                console.log('i, wait, total', i,wait,fundList.length)
+                console.log(`${i}/${fundList.length}, wait`,wait)
                 await sleep(wait)
             }
             err = 0
