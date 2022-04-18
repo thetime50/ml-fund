@@ -27,6 +27,12 @@ export const apiFundEstimateNav = (id)=> http.get(`/djapi/fund/estimate-nav/${id
 //   unit_nav: '3.9870',
 //   f_type: 'fund'
 // }]
+// type 
+//    股票型 1
+//    混合型 3
+//    债券型 2
+//    指数型 5
+//    QDII型 11
 // https://danjuanfunds.com/djapi/v3/filter/fund?type=${TYPE}&order_by=${order_by}&size=${SIZE}&page=${page}
 export const apiFundRank = (type, order_by, size, page) => http.get(`/djapi/v3/filter/fund?type=${type}&order_by=${order_by}&size=${size}&page=${page}`)
 

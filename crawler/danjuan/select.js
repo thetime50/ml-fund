@@ -12,9 +12,9 @@ import {jcdb} from '../lib/jcdb/index.js'
 
 const YIELD_MIN = 80
 
-async function saveCsv(list){
+async function saveCsv(list,fname){
     const cols = Object.keys( list[0] )
-    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',`good-found-${dayjs().format('YYYY-MMDD-HHmmss')}_${YIELD_MIN}.csv`), cols)
+    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',fname || `good-found-${dayjs().format('YYYY-MMDD-HHmmss')}_${YIELD_MIN}.csv`), cols)
     db.add(list)
 }
 
@@ -126,5 +126,24 @@ async function addYeled(){
     await saveCsv(reslist)
 }
 
-addYeled()
+// addYeled()
 
+
+async function saveRank(){
+    let resRank = []
+    for (let i = 1; i <= 10; i++) {
+        let {data:rank} = await apiFundRank(3,'3y',500 ,i)
+        resRank = resRank.concat(rank.data.items)
+        let wait = (1000 + Math.random()*2000).toFixed(2)
+        console.log('i, wait, len, total', i,wait,resRank.length,rank.data.total_items)
+        if(resRank.length >= rank.data.total_items){
+            break;
+        }
+        await delay(wait)
+    }
+    let fname = `rank-${dayjs().format('YYYY-MMDD-HHmm')}.csv`
+    await saveCsv(resRank,fname)
+    console.log('save rank file ', fname)
+}
+
+saveRank()
