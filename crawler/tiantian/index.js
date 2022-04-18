@@ -46,6 +46,7 @@ async function main(){
     const fundList = await rankdb.get()
     // console.log('fundList', fundList)
     
+    let err = 0
     for(let i=0; i < 1 /* fundList.length */; i++){
         let fund = fundList[i]
         try{
@@ -56,9 +57,14 @@ async function main(){
                 console.log('i, wait, total', i,wait,fundList.length)
                 await sleep(wait)
             }
+            err = 0
         }catch (e){
             console.log('i,fund', i,fund)
             console.error(e)
+            err+=1
+            if(err>15){
+                throw new error('网络错误 err > 15')
+            }
         }
     }
 }

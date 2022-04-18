@@ -5,16 +5,16 @@ data/*
 # data/dj/*
 # !data/tt
 # data/tt/*
-!data/ttsel
-data/ttsel/*
-!data/ttsel/good-found-2022-0417-1945_100.csv
-!data/ttsel/good-found-2022-0418-011852_80.csv
-!data/ttsel/good-found-2022-0418-013047.csv
-!data/ttsel/gf-2022-0418-013047.log
-!data/ttsel/good-found-2022-0418-015706.csv
-!data/ttsel/rank-fund-2022-0418-2308.csv
-!data/ttsel/rank-mix-2022-0418-2310.csv
-!data/ttsel/README.md
+!data/djsel
+data/djsel/*
+!data/djsel/good-found-2022-0417-1945_100.csv
+!data/djsel/good-found-2022-0418-011852_80.csv
+!data/djsel/good-found-2022-0418-013047.csv
+!data/djsel/gf-2022-0418-013047.log
+!data/djsel/good-found-2022-0418-015706.csv
+!data/djsel/rank-fund-2022-0418-2308.csv
+!data/djsel/rank-mix-2022-0418-2310.csv
+!data/djsel/README.md
 node_modules/**
 
 # 忽略文件

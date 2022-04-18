@@ -14,7 +14,7 @@ const YIELD_MIN = 80
 
 async function saveCsv(list,fname){
     const cols = Object.keys( list[0] )
-    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',fname || `good-found-${dayjs().format('YYYY-MMDD-HHmmss')}_${YIELD_MIN}.csv`), cols)
+    const db = await jcdb(path.join(process.cwd(), '/data/djsel',fname || `good-found-${dayjs().format('YYYY-MMDD-HHmmss')}_${YIELD_MIN}.csv`), cols)
     db.add(list)
 }
 
@@ -104,7 +104,7 @@ async function getDbInstace(fname){
         "keep_time",
         "work_year",
     ]
-    const db = await jcdb(path.join(process.cwd(), '/data/ttsel',fname), cols)
+    const db = await jcdb(path.join(process.cwd(), '/data/djsel',fname), cols)
     return db
 }
 

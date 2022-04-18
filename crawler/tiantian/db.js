@@ -22,7 +22,7 @@ export async function checkDbFile(fid){
 }
 
 export async function getRankDbInstace(fundListFname){
-    const fundListFpath = path.join(process.cwd(), '/data/ttsel',fundListFname)
+    const fundListFpath = path.join(process.cwd(), '/data/djsel',fundListFname)
 
     const cols = ['fd_code','fd_name','yield','sf_type','unit_nav','f_type']
     const rankdb = await jcdb(fundListFpath, cols)

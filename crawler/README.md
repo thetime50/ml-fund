@@ -25,7 +25,7 @@ https://danjuanapp.com/
 // 数据爬虫  
 npm run dj  
 // 基金选择  
-npm run ttsel
+npm run djsel
 
 ## 天天
 // 数据爬虫  
