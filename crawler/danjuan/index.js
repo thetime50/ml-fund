@@ -1,18 +1,12 @@
 import {dataPath,userCookie} from './cfj.js';
 import path from 'path'
 import {
-    csvdbInit,
-    csvdbTest,
-} from "../lib/jcdb/index.js"
-import {
     apiAccount,
     apiSearch,
     apiFundNavGrowth,
     apiFundEstimateNav
 } from "./api.js"
 
-csvdbInit(path.join(dataPath, 'test.csv'))
-await csvdbTest()
 // 中海顺鑫混合 002213
 
 // let navGrowth = await apiFundNavGrowth('002213',7)

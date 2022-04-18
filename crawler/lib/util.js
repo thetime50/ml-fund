@@ -3,6 +3,7 @@ export function randomStr (length,decimal=16) {
     return arr.join('')
 }
 
+// jq 请求的数据解析 去除 jQuery18309227070828646549_1649154465185(json) 结构
 export function jqResParse(str,type = 'json'){
     let res = str.replace(/^jQuery\w*\(/,'')
     res = res.slice(0,-1)
@@ -13,6 +14,7 @@ export function jqResParse(str,type = 'json'){
 }
 
 const declaresList = ['var','let','const','function', 'class'];
+// 解析js文件里所有字段
 export function jsFileParse(file,export_ = false){
     const resObj = '__ex_res__'
     let decList = declaresList
@@ -32,6 +34,8 @@ export function jsFileParse(file,export_ = false){
     let fun = new Function(`${file}; let  ${resObj}= {}; ${exFields.join('')} return ${resObj};`)
     return {fields:match, fun}
 }
+
+// 获取js文件里所有字段列表
 export function jsFileFields(file,export_ = false){
     const resObj = '__ex_res__'
     let decList = declaresList
@@ -45,6 +49,7 @@ export function jsFileFields(file,export_ = false){
     return match
 }
 
+// 解析js文件里某个字段
 export function jsFileField(field,file/* ,export_ = false */){
     let obj = undefined
     let decList = declaresList
@@ -97,6 +102,7 @@ export const prm = (path) => {
     })
 }
 
+// 检查并创建文件夹
 export async function checkPath (dpath,generate = false) {
     try {
         let stat = await pfs.stat(dpath)

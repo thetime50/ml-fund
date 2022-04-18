@@ -10,28 +10,7 @@ import {
 // 行索引 row 
 // 一般使用数据索引
 
-let DBPATH = 'users.csv'
 const DEFAULT_DELIM = ",";
-
-export function csvdbInit(dbpath,){
-    DBPATH = dbpath
-}
-export async function csvdbTest() {
-    const db = await csvdb(DBPATH, ["id", "name", "mail"], DEFAULT_DELIM);
-    let res = await db.get({
-        mail: "johndoe@github.com"
-    });
-    console.log('get({ mail: "johndoe@github.com" }', res)
-    res = await db.get({
-        mail: "jobs@github.com"
-    });
-    console.log('get({ mail: "jobs@github.com" })', res)
-    if(!res.length){
-        let data = {id: 2, name: "stevejobs", mail: "jobs@github.com"}
-        console.log('db.add', data)
-        await db.add(data);
-    }
-}
 
 export async function jcdb(dbpath,cols){
     
